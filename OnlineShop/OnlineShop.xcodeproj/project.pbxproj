@@ -9,16 +9,25 @@
 /* Begin PBXBuildFile section */
 		12A91D6929003794003D2899 /* OnlineShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D6829003794003D2899 /* OnlineShopApp.swift */; };
 		12A91D6B29003794003D2899 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D6A29003794003D2899 /* ContentView.swift */; };
-		12A91D6D29003795003D2899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D6C29003795003D2899 /* Assets.xcassets */; };
 		12A91D7029003795003D2899 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D6F29003795003D2899 /* Preview Assets.xcassets */; };
+		12A91D7C29003A06003D2899 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D7929003A06003D2899 /* Raleway-SemiBold.ttf */; };
+		12A91D7D29003A06003D2899 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D7A29003A06003D2899 /* Raleway-Regular.ttf */; };
+		12A91D7E29003A06003D2899 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D7B29003A06003D2899 /* Raleway-Bold.ttf */; };
+		12A91D8229003B11003D2899 /* OnBoardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D8129003B11003D2899 /* OnBoardingPage.swift */; };
+		12A91D8429003CD3003D2899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D8329003CD3003D2899 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		12A91D6529003794003D2899 /* OnlineShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A91D6829003794003D2899 /* OnlineShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineShopApp.swift; sourceTree = "<group>"; };
 		12A91D6A29003794003D2899 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		12A91D6C29003795003D2899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12A91D6F29003795003D2899 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		12A91D7929003A06003D2899 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		12A91D7A29003A06003D2899 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		12A91D7B29003A06003D2899 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		12A91D7F29003A75003D2899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		12A91D8129003B11003D2899 /* OnBoardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPage.swift; sourceTree = "<group>"; };
+		12A91D8329003CD3003D2899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +60,12 @@
 		12A91D6729003794003D2899 /* OnlineShop */ = {
 			isa = PBXGroup;
 			children = (
+				12A91D7F29003A75003D2899 /* Info.plist */,
+				12A91D8029003ADB003D2899 /* View */,
+				12A91D7829003A06003D2899 /* Fonts */,
 				12A91D6829003794003D2899 /* OnlineShopApp.swift */,
 				12A91D6A29003794003D2899 /* ContentView.swift */,
-				12A91D6C29003795003D2899 /* Assets.xcassets */,
+				12A91D8329003CD3003D2899 /* Assets.xcassets */,
 				12A91D6E29003795003D2899 /* Preview Content */,
 			);
 			path = OnlineShop;
@@ -65,6 +77,25 @@
 				12A91D6F29003795003D2899 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		12A91D7829003A06003D2899 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				12A91D7929003A06003D2899 /* Raleway-SemiBold.ttf */,
+				12A91D7A29003A06003D2899 /* Raleway-Regular.ttf */,
+				12A91D7B29003A06003D2899 /* Raleway-Bold.ttf */,
+			);
+			name = Fonts;
+			path = "../../../Downloads/EcommerceAppKit-main/Shared/Fonts";
+			sourceTree = "<group>";
+		};
+		12A91D8029003ADB003D2899 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12A91D8129003B11003D2899 /* OnBoardingPage.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +156,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12A91D7E29003A06003D2899 /* Raleway-Bold.ttf in Resources */,
+				12A91D7D29003A06003D2899 /* Raleway-Regular.ttf in Resources */,
+				12A91D7C29003A06003D2899 /* Raleway-SemiBold.ttf in Resources */,
 				12A91D7029003795003D2899 /* Preview Assets.xcassets in Resources */,
-				12A91D6D29003795003D2899 /* Assets.xcassets in Resources */,
+				12A91D8429003CD3003D2899 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12A91D6B29003794003D2899 /* ContentView.swift in Sources */,
+				12A91D8229003B11003D2899 /* OnBoardingPage.swift in Sources */,
 				12A91D6929003794003D2899 /* OnlineShopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +305,7 @@
 				DEVELOPMENT_TEAM = AJ4GPRL926;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnlineShop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +335,7 @@
 				DEVELOPMENT_TEAM = AJ4GPRL926;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnlineShop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
