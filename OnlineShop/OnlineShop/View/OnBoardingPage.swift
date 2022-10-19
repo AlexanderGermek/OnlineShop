@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-extension Font {
-	static let raleway = "Raleway-Regular"
-}
-
-extension Color {
-	static let customPurple = Color("Purple")
-}
-
-extension View {
-		func getRect() -> CGRect {
-				return UIScreen.main.bounds
-		}
-}
-
 struct OnBoardingPage: View {
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -49,13 +35,13 @@ struct OnBoardingPage: View {
 					.foregroundColor(Color.customPurple)
 			}
 			.padding(.horizontal, 30)
-			.offset(y: getRect().height < 750 ? 20 : 40)
+			.offset(y: getScreenBounds().height < 750 ? 20 : 40)
 
 			Spacer()
 
 		}
 		.padding(.horizontal, 10)
-		.padding(.top, getRect().height < 750 ? 0 : 20)
+		.padding(.top, getScreenBounds().height < 750 ? 0 : 20)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.customPurple)
 	}
