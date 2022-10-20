@@ -19,6 +19,7 @@
 		12A91D8B290056DE003D2899 /* LoginPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D8A290056DE003D2899 /* LoginPageViewModel.swift */; };
 		12A91D8D2900594F003D2899 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D8C2900594F003D2899 /* Extensions.swift */; };
 		12A91D8F29005BD2003D2899 /* CustomCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D8E29005BD2003D2899 /* CustomCornerShape.swift */; };
+		12CF023C29013783002DB86A /* BackgroundCirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CF023B29013783002DB86A /* BackgroundCirclesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		12A91D8A290056DE003D2899 /* LoginPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewModel.swift; sourceTree = "<group>"; };
 		12A91D8C2900594F003D2899 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		12A91D8E29005BD2003D2899 /* CustomCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCornerShape.swift; sourceTree = "<group>"; };
+		12CF023B29013783002DB86A /* BackgroundCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCirclesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +105,8 @@
 		12A91D8029003ADB003D2899 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				12CF023A29013731002DB86A /* LoginPageScreen */,
 				12A91D8129003B11003D2899 /* OnBoardingPage.swift */,
-				12A91D8729004DF0003D2899 /* LoginPage.swift */,
-				12A91D8E29005BD2003D2899 /* CustomCornerShape.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,6 +117,16 @@
 				12A91D8A290056DE003D2899 /* LoginPageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		12CF023A29013731002DB86A /* LoginPageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				12A91D8729004DF0003D2899 /* LoginPage.swift */,
+				12A91D8E29005BD2003D2899 /* CustomCornerShape.swift */,
+				12CF023B29013783002DB86A /* BackgroundCirclesView.swift */,
+			);
+			path = LoginPageScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				12A91D6B29003794003D2899 /* ContentView.swift in Sources */,
 				12A91D8229003B11003D2899 /* OnBoardingPage.swift in Sources */,
 				12A91D8B290056DE003D2899 /* LoginPageViewModel.swift in Sources */,
+				12CF023C29013783002DB86A /* BackgroundCirclesView.swift in Sources */,
 				12A91D6929003794003D2899 /* OnlineShopApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
