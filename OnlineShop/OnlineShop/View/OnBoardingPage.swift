@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnBoardingPage: View {
+		@State var showLoginPage: Bool = false
 	var body: some View {
 		VStack(alignment: .leading) {
 
@@ -22,7 +23,9 @@ struct OnBoardingPage: View {
 				.shadow(color: .black.opacity(0.5), radius: 5, x: 5, y: 5)
 
 			Button {
-
+					withAnimation {
+							showLoginPage = true
+					}
 			} label: {
 				Text("Get started")
 					.font(.custom(Font.raleway, size: 18))
@@ -44,6 +47,14 @@ struct OnBoardingPage: View {
 		.padding(.top, getScreenBounds().height < 750 ? 0 : 20)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.customPurple)
+		.overlay {
+				Group {
+						if showLoginPage {
+								LoginPage()
+										.transition(.slide)
+						}
+				}
+		}
 	}
 }
 
