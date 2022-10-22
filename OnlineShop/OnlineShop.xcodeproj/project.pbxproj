@@ -64,9 +64,9 @@
 		1288AD3029041AA300C04CA7 /* MainPageScreen */ = {
 			isa = PBXGroup;
 			children = (
-				1288AD3B2904248300C04CA7 /* ViewModel */,
 				1288AD3429041FCC00C04CA7 /* Model */,
 				1288AD372904230E00C04CA7 /* View */,
+				1288AD3B2904248300C04CA7 /* ViewModel */,
 			);
 			path = MainPageScreen;
 			sourceTree = "<group>";

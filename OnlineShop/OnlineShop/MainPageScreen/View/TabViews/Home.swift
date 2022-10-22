@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Home: View {
+		@Namespace var animation
+		private var productLineAnimationName = "productLineAnimationName"
+		@StateObject var viewModel: HomeViewModel = HomeViewModel()
 		var body: some View {
 				ScrollView(.vertical, showsIndicators: false) {
 						VStack(spacing: 15) {
@@ -57,11 +60,33 @@ struct Home: View {
 		// MARK: Private functions
 		private func productTypeView(for type: ProductType) -> some View {
 				Button {
-
+						withAnimation {
+								viewModel.productType = type
+						}
 				} label: {
 						Text(type.rawValue)
 								.font(.custom(Font.raleway, size: 15))
 								.fontWeight(.semibold)
+								.foregroundColor(viewModel.productType == type ? Color.customPurple : .gray)
+								.padding(.bottom, 10)
+								/// Purple Line
+								.overlay(
+										/// Matched Geometry Effect - перетекающая анимация между элементами
+										ZStack {
+												if viewModel.productType == type {
+														Capsule()
+																.fill(Color.customPurple)
+																.matchedGeometryEffect(id: "PRODUCTTAB", in: animation)
+																.frame(height: 2)
+												} else {
+														Capsule()
+																.fill(.clear)
+																.frame(height: 2)
+												}
+										}
+										.padding(.horizontal, -5)
+										, alignment: .bottom
+								)
 				}
 		}
 }
