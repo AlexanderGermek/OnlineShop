@@ -37,16 +37,25 @@ struct MainPage: View {
 														.renderingMode(.template)
 														.aspectRatio(contentMode: .fit)
 														.frame(width: 22, height: 22)
+														.background(
+																Color.customPurple
+																		.opacity(0.1)
+																		.cornerRadius(5)
+																		.blur(radius: 5)
+																		.padding(-7)
+																		.opacity(currentTab == tabCase ? 1 : 0)
+														)
 														.frame(maxWidth: .infinity)
 														.foregroundColor(getTabBarColor(tabCase))
 										}
 								}
 						}
-						.padding([.horizontal, .bottom])
+						.padding([.horizontal, .top])
 						.padding(.bottom, 5)
 				}
 		}
 
+		// MARK: Private func's
 		private func getTabBarColor(_ tab: TabCase) -> Color {
 				currentTab == tab ? Color.customPurple : .black.opacity(0.3)
 		}

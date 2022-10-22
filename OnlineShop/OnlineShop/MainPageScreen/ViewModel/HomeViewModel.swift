@@ -1,0 +1,31 @@
+//
+//  HomeViewModel.swift
+//  OnlineShop
+//
+//  Created by Alexander Germek on 22.10.2022.
+//
+
+import SwiftUI
+
+class HomeViewModel: ObservableObject {
+		@Published var productType: ProductType = .wearable
+
+		/// Samples
+		@Published var products: [Product] = [
+				Product(type: .wearable, title: "Apple Watch", subtitle: "Series 6: Red", price: "$359", productImage: "AppleWatch6"),
+				Product(type: .wearable, title: "Samsung Watch", subtitle: "Gear: Black", price: "$180", productImage: "SamsungWatch"),
+				Product(type: .wearable, title: "Apple Watch", subtitle: "Series 4: Black", price: "$250", productImage: "AppleWatch4"),
+
+				Product(type: .phones, title: "iPhone 13", subtitle: "A15 - Pink", price: "$699", productImage: "iPhone13"),
+				Product(type: .phones, title: "iPhone 12", subtitle: "A14 - Blue", price: "$599", productImage: "iPhone12"),
+				Product(type: .phones, title: "iPhone 11", subtitle: "A13 - Purple", price: "$499", productImage: "iPhone11"),
+				Product(type: .phones, title: "iPhone SE 2", subtitle: "A13 - White", price: "$399", productImage: "iPhoneSE"),
+
+				Product(type: .laptops, title: "MacBook Air", subtitle: "M1 - Gold", price: "$999", productImage: "MacBookAir"),
+				Product(type: .laptops, title: "MacBook Pro", subtitle: "M1 - Space Grey", price: "$1299", productImage: "MacBookPro"),
+
+				Product(type: .tablets, title: "iPad Pro", subtitle: "M1 - Silver", price: "$999", productImage: "iPadPro"),
+				Product(type: .tablets, title: "iPad Air 4", subtitle: "A14 - Pink", price: "$699", productImage: "iPadAir"),
+		]
+}
+
