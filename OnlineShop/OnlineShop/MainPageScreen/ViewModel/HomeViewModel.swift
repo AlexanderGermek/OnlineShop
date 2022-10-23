@@ -33,6 +33,8 @@ final class HomeViewModel: ObservableObject {
 
 		@Published var filteredProducts: [Product] = []
 		@Published var isShowMoreProductsOnType: Bool = false
+		@Published var searchText = ""
+		@Published var isSearchActivated = false
 
 		init() {
 				filterProductByType()

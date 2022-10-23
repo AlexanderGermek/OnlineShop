@@ -10,7 +10,8 @@ import SwiftUI
 struct Home: View {
 		// MARK: Matched Geometry Effect var's
 		@Namespace var animation
-		private var productLineAnimationName = "productLineAnimationName"
+		private var productLineMGE = "productLineMGE"
+		private var searchBarMGE = "searchBarMGE"
 
 		/// viewModel
 		@StateObject var viewModel: HomeViewModel = HomeViewModel()
@@ -20,22 +21,22 @@ struct Home: View {
 						VStack(spacing: 15) {
 
 								/// Search Bar
-								HStack(spacing: 15) {
-										Image(systemName: "magnifyingglass")
-												.font(.title2)
-												.foregroundColor(.gray)
-
-										TextField("Search", text: .constant(""))
-												.disabled(true)
+								ZStack {
+										if viewModel.isSearchActivated {
+												SearchBarView()
+										} else {
+												SearchBarView()
+														.matchedGeometryEffect(id: searchBarMGE, in: animation)
+										}
 								}
-								.padding(.vertical, 12)
-								.padding(.horizontal)
-								.background(
-										Capsule()
-												.strokeBorder(.gray, lineWidth: 0.8)
-								)
 								.frame(width: getScreenBounds().width / 1.6)
 								.padding(.horizontal, 25)
+								.contentShape(Rectangle())
+								.onTapGesture {
+										withAnimation(.easeInOut) {
+												viewModel.isSearchActivated = true
+										}
+								}
 
 								/// Main  Home Text
 								Text("Order online\ncollect in store")
@@ -51,7 +52,7 @@ struct Home: View {
 
 												HStack(spacing: 18) {
 														ForEach(ProductType.allCases, id: \.self) { type in
-																productTypeView(for: type)
+																ProductTypeView(for: type)
 														}
 												}
 												.padding(.horizontal, 25)
@@ -68,7 +69,7 @@ struct Home: View {
 								ScrollView(.horizontal, showsIndicators: false) {
 										HStack(spacing: 25) {
 												ForEach(viewModel.filteredProducts) { product in
-														productCardView(for: product)
+														ProductCardView(for: product)
 												}
 										}
 										.padding(.horizontal, 25)
@@ -78,7 +79,7 @@ struct Home: View {
 								.padding(.top, 30)
 
 								/// See More Button ...
-								getSeeMoreButton()
+								SeeMoreButton()
 						}
 						.padding(.vertical)
 				}
@@ -92,11 +93,20 @@ struct Home: View {
 				} content: { 
 						MoreProductsView()
 				}
+				/// Displaying Search View
+				.overlay {
+						ZStack {
+								if viewModel.isSearchActivated {
+										SearchView(animation: animation)
+												.environmentObject(viewModel)
+								}
+						}
+				}
 
 		}
 
-		// MARK: Private functions
-		private func productTypeView(for type: ProductType) -> some View {
+		// MARK: some Views
+		private func ProductTypeView(for type: ProductType) -> some View {
 				Button {
 						withAnimation {
 								viewModel.productType = type
@@ -114,7 +124,7 @@ struct Home: View {
 												if viewModel.productType == type {
 														Capsule()
 																.fill(Color.customPurple)
-																.matchedGeometryEffect(id: productLineAnimationName, in: animation)
+																.matchedGeometryEffect(id: productLineMGE, in: animation)
 																.frame(height: 2)
 												} else {
 														Capsule()
@@ -128,7 +138,7 @@ struct Home: View {
 				}
 		}
 
-		private func productCardView(for product: Product) -> some View {
+		private func ProductCardView(for product: Product) -> some View {
 				let imageSize = getScreenBounds().width / 2.5
 
 				return VStack(spacing: 10) {
@@ -164,7 +174,7 @@ struct Home: View {
 				)
 		}
 
-		private func getSeeMoreButton() -> some View {
+		private func SeeMoreButton() -> some View {
 				Button {
 						viewModel.isShowMoreProductsOnType.toggle()
 				} label: {
@@ -179,6 +189,23 @@ struct Home: View {
 				.frame(maxWidth: .infinity, alignment: .trailing)
 				.padding(.trailing)
 				.padding(.top, 10)
+		}
+
+		private func SearchBarView() -> some View {
+				HStack(spacing: 15) {
+						Image(systemName: "magnifyingglass")
+								.font(.title2)
+								.foregroundColor(.gray)
+
+						TextField("Search", text: .constant(""))
+								.disabled(true)
+				}
+				.padding(.vertical, 12)
+				.padding(.horizontal)
+				.background(
+						Capsule()
+								.strokeBorder(.gray, lineWidth: 0.8)
+				)
 		}
 }
 
