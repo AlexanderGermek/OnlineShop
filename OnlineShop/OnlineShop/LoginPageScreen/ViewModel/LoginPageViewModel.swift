@@ -5,7 +5,7 @@
 //  Created by Alexander Germek on 19.10.2022.
 //
 
-import Foundation
+import SwiftUI
 
 final class LoginPageViewModel: ObservableObject {
 		/// Login properties
@@ -18,13 +18,20 @@ final class LoginPageViewModel: ObservableObject {
 		@Published var reEnterPassword: String = ""
 		@Published var isShowReEnterPassword: Bool = false
 
+		/// AppStorage
+		@AppStorage("logStatus") var logStatus = false
+
 		/// Functions
 		func login() {
-
+				withAnimation {
+						logStatus = true
+				}
 		}
 
 		func register() {
-
+				withAnimation {
+						logStatus = true
+				}
 		}
 
 		func forgotPassword() {

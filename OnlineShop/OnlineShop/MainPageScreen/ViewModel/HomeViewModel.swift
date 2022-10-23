@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class HomeViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject {
 		@Published var productType: ProductType = .wearable
 
 		/// Samples
@@ -23,9 +23,29 @@ class HomeViewModel: ObservableObject {
 
 				Product(type: .laptops, title: "MacBook Air", subtitle: "M1 - Gold", price: "$999", productImage: "MacBookAir"),
 				Product(type: .laptops, title: "MacBook Pro", subtitle: "M1 - Space Grey", price: "$1299", productImage: "MacBookPro"),
+				Product(type: .laptops, title: "iMac", subtitle: "M1 - Purple", price: "$1599", productImage: "iMac"),
 
 				Product(type: .tablets, title: "iPad Pro", subtitle: "M1 - Silver", price: "$999", productImage: "iPadPro"),
 				Product(type: .tablets, title: "iPad Air 4", subtitle: "A14 - Pink", price: "$699", productImage: "iPadAir"),
+				Product(type: .tablets, title: "iPad Mini", subtitle: "A15 - Grey", price: "$599", productImage: "iPadMini"),
+
 		]
+
+		@Published var filteredProducts: [Product] = []
+		@Published var isShowMoreProductsOnType: Bool = false
+
+		init() {
+				filterProductByType()
+		}
+
+		func filterProductByType() {
+				DispatchQueue.global(qos: .userInteractive).async {
+						let result = self.products.lazy.filter { $0.type == self.productType }.prefix(4)
+
+						DispatchQueue.main.async {
+								self.filteredProducts = result.compactMap { $0 }
+						}
+				}
+		}
 }
 

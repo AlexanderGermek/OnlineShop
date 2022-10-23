@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginPage: View {
+		
 		@StateObject var loginData: LoginPageViewModel = LoginPageViewModel()
 		var body: some View {
 

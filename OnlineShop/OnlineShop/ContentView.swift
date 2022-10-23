@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-	var body: some View {
-		OnBoardingPage()
-	}
+		/// Log status
+		@AppStorage("logStatus") var logStatus = false
+		var body: some View {
+				Group {
+						if logStatus {
+								MainPage()
+						} else {
+								OnBoardingPage()
+						}
+				}
+		}
 }
 
 struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
+		static var previews: some View {
+				ContentView()
+		}
 }

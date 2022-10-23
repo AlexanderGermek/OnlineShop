@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		126B1FD72905189000969980 /* MoreProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B1FD62905189000969980 /* MoreProductsView.swift */; };
 		1288AD2F290411A200C04CA7 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288AD2E290411A200C04CA7 /* MainPage.swift */; };
 		1288AD3329041B3D00C04CA7 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288AD3229041B3D00C04CA7 /* Home.swift */; };
 		1288AD3629041FE200C04CA7 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1288AD3529041FE200C04CA7 /* ProductType.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		126B1FD62905189000969980 /* MoreProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreProductsView.swift; sourceTree = "<group>"; };
 		1288AD2E290411A200C04CA7 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		1288AD3229041B3D00C04CA7 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1288AD3529041FE200C04CA7 /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				1288AD2E290411A200C04CA7 /* MainPage.swift */,
 				1288AD3129041AAE00C04CA7 /* TabViews */,
+				126B1FD62905189000969980 /* MoreProductsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,9 +111,9 @@
 		1288AD392904234500C04CA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				12A91D8729004DF0003D2899 /* LoginPage.swift */,
 				12CF023B29013783002DB86A /* BackgroundCirclesView.swift */,
 				12A91D8E29005BD2003D2899 /* CustomCornerShape.swift */,
-				12A91D8729004DF0003D2899 /* LoginPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				12CF023C29013783002DB86A /* BackgroundCirclesView.swift in Sources */,
 				12A91D6929003794003D2899 /* OnlineShopApp.swift in Sources */,
 				1288AD3F2904256B00C04CA7 /* Product.swift in Sources */,
+				126B1FD72905189000969980 /* MoreProductsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

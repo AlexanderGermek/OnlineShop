@@ -21,8 +21,12 @@ struct MainPage: View {
 						/// Tab View
 						TabView(selection: $currentTab) {
 										ForEach(TabCase.allCases, id: \.self) { tabCase in
-												Text(tabCase.rawValue)
-														.tag(tabCase)
+
+												switch tabCase {
+												case .home: Home()
+												default: Text(tabCase.rawValue)
+																.tag(tabCase)
+												}
 										}
 						}
 
@@ -53,6 +57,7 @@ struct MainPage: View {
 						.padding([.horizontal, .top])
 						.padding(.bottom, 5)
 				}
+				.background(Color.homeBackground.ignoresSafeArea())
 		}
 
 		// MARK: Private func's
