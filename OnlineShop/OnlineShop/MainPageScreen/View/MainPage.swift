@@ -24,6 +24,7 @@ struct MainPage: View {
 
 												switch tabCase {
 												case .home: Home()
+												case .profile: Profile()
 												default: Text(tabCase.rawValue)
 																.tag(tabCase)
 												}
