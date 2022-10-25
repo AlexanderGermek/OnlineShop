@@ -10,6 +10,9 @@ import SwiftUI
 struct MainPage: View {
 		@State private var currentTab: TabCase = .home
 
+		@StateObject var detailViewModel = DetailProductViewModel()
+		@Namespace var animation
+
 		/// Hidden tabbar
 		init() {
 				UITabBar.appearance().isHidden = true
@@ -23,8 +26,13 @@ struct MainPage: View {
 										ForEach(TabCase.allCases, id: \.self) { tabCase in
 
 												switch tabCase {
-												case .home: Home()
-												case .profile: Profile()
+												case .home:
+														Home(animation: animation)
+																.environmentObject(detailViewModel)
+																.tag(tabCase)
+												case .profile:
+														Profile()
+																.tag(tabCase)
 												default: Text(tabCase.rawValue)
 																.tag(tabCase)
 												}
@@ -59,6 +67,16 @@ struct MainPage: View {
 						.padding(.bottom, 5)
 				}
 				.background(Color.homeBackground.ignoresSafeArea())
+				.overlay(
+						ZStack {
+								if detailViewModel.isShowDetailProduct {
+										DetailProductView(animation: animation)
+												.environmentObject(detailViewModel)
+												.transition(.asymmetric(insertion: .move(edge: .trailing),
+																								removal: .opacity))
+								}
+						}
+				)
 		}
 
 		// MARK: Private func's

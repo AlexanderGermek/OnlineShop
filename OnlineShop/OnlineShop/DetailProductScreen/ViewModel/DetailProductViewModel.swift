@@ -11,4 +11,5 @@ final class DetailProductViewModel: ObservableObject {
 
 		@Published var product: Product?
 		@Published var isShowDetailProduct = false
+		@Published var fromSearch = false
 }

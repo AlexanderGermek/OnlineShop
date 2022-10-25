@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
 		var animation: Namespace.ID
 		var searchBarMGE = "searchBarMGE"
-
+		@EnvironmentObject var detailViewModel: DetailProductViewModel
 		@EnvironmentObject var viewModel: HomeViewModel
 		@FocusState var startTextField: Bool
 
@@ -23,6 +23,7 @@ struct SearchView: View {
 												viewModel.isSearchActivated = false
 										}
 										viewModel.searchText = ""
+										detailViewModel.fromSearch = false
 								} label: {
 										Image(systemName: "arrow.left")
 												.font(.title2)
@@ -68,7 +69,56 @@ struct SearchView: View {
 																.padding(.vertical)
 
 														StaggeredGridView(columns: 2, spacing: 20, list: searchedProducts) { product in
-																ProductCardView(product: product)
+//																ProductCardView(product: product)
+
+																VStack(spacing: 10) {
+
+																		ZStack {
+																				if detailViewModel.isShowDetailProduct, let product = detailViewModel.product {
+																						Image(product.productImage)
+																								.resizable()
+																								.aspectRatio(contentMode: .fit)
+																								.opacity(0)
+																				} else {
+																						Image(product.productImage)
+																								.resizable()
+																								.aspectRatio(contentMode: .fit)
+																								.matchedGeometryEffect(id: "\(product.id)SEARCH", in: animation)
+																				}
+																		}
+																		/// Moving image to top to look like its fixed at half top
+																		.offset(y: -50)
+																		.padding(.bottom, -50)
+
+																		Text(product.title)
+																				.font(.custom(Font.raleway, size: 18))
+																				.fontWeight(.semibold)
+																				.padding(.top)
+
+																		Text(product.subtitle)
+																				.font(.custom(Font.raleway, size: 14))
+																				.foregroundColor(.gray)
+
+																		Text(product.price)
+																				.font(.custom(Font.raleway, size: 16))
+																				.fontWeight(.bold)
+																				.foregroundColor(Color.customPurple)
+																				.padding(.top, 5)
+																}
+																.padding(.horizontal, 20)
+																.padding(.bottom, 22)
+																.background(
+																		Color.white.cornerRadius(25)
+																)
+																.padding(.top, 50)
+																/// Showing Detail Product when tapped
+																.onTapGesture {
+																		withAnimation(.easeInOut) {
+																				detailViewModel.fromSearch = true
+																				detailViewModel.isShowDetailProduct = true
+																				detailViewModel.product = product
+																		}
+																}
 														}
 												}
 												.padding()
@@ -115,6 +165,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
 		static var previews: some View {
-				Home()
+				MainPage()
 		}
 }

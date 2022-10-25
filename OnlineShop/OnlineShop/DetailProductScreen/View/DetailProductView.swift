@@ -9,8 +9,10 @@ import SwiftUI
 
 struct DetailProductView: View {
 //		var product: Product
+		// MARK: Properties
+		var animation: Namespace.ID // matched geometry effect
 
-		@EnvironmentObject var viewModel: DetailProductViewModel
+		@EnvironmentObject var detailViewModel: DetailProductViewModel
 		var body: some View {
 				VStack {
 						/// Title Bar and Product Image
@@ -21,7 +23,7 @@ struct DetailProductView: View {
 										/// Close detail view
 										Button {
 												withAnimation(.easeInOut) {
-														viewModel.isShowDetailProduct = false
+														detailViewModel.isShowDetailProduct = false
 												}
 										} label: {
 												Image(systemName: "arrow.left")
@@ -46,15 +48,19 @@ struct DetailProductView: View {
 								.padding()
 
 								/// Product Image
-								Image(viewModel.product?.productImage ?? "")
+//								let id =
+								Image(detailViewModel.product?.productImage ?? "")
 										.resizable()
 										.aspectRatio(contentMode: .fit)
+										.matchedGeometryEffect(id: "\(detailViewModel.product?.id ?? "")\(detailViewModel.fromSearch ? "SEARCH" : "IMAGE")",
+																					 in: animation)
 										.padding(.horizontal)
 										.offset(y: -12)
 										.frame(maxHeight: .infinity)
 
 						}
 						.frame(height: getScreenBounds().height / 2.7)
+						.zIndex(1)
 
 						/// Product Details
 						ScrollView(.vertical, showsIndicators: false) {
@@ -66,6 +72,7 @@ struct DetailProductView: View {
 										.clipShape(CustomCornerShape(corners: [.topLeft, .topRight], radius: 25))
 										.ignoresSafeArea()
 						)
+						.zIndex(0)
 				}
 				.background(Color.homeBackground.ignoresSafeArea())
 		}
@@ -74,10 +81,10 @@ struct DetailProductView: View {
 		private func ProductDetailsView() -> some View {
 				VStack(alignment: .leading, spacing: 15) {
 						/// Descriptions
-						Text(viewModel.product?.title ?? "")
+						Text(detailViewModel.product?.title ?? "")
 								.font(.custom(Font.raleway, size: 20).bold())
 
-						Text(viewModel.product?.subtitle ?? "")
+						Text(detailViewModel.product?.subtitle ?? "")
 								.font(.custom(Font.raleway, size: 18))
 								.foregroundColor(.gray)
 
@@ -109,11 +116,26 @@ struct DetailProductView: View {
 
 								Spacer()
 
-								Text("\(viewModel.product?.price ?? "")")
+								Text("\(detailViewModel.product?.price ?? "")")
 										.font(.custom(Font.raleway, size: 20).bold())
 										.foregroundColor(Color.customPurple)
 						}
 						.padding(.vertical, 20)
+
+						/// Add button
+						Button {
+
+						} label: {
+								Text("add to basket")
+										.font(.custom(Font.raleway, size: 20).bold())
+										.foregroundColor(.white)
+										.padding(.vertical, 20)
+										.frame(maxWidth: .infinity)
+										.background(
+												Color.customPurple.cornerRadius(15)
+										)
+										.shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
+						}
 
 				}
 				.padding([.horizontal, .bottom], 20)
@@ -123,11 +145,12 @@ struct DetailProductView: View {
 
 }
 
-struct DetailProductView_Previews: PreviewProvider {
-		static var previews: some View {
-				let object = DetailProductViewModel()
-				object.product = HomeViewModel().products[0]
-				return DetailProductView()
-						.environmentObject(object)
-		}
-}
+//struct DetailProductView_Previews: PreviewProvider {
+//		static var previews: some View {
+//				let animation: Namespace.ID
+//				let object = DetailProductdetailViewModel()
+//				object.product = HomedetailViewModel().products[0]
+//				return DetailProductView()
+//						.environmentObject(object)
+//		}
+//}

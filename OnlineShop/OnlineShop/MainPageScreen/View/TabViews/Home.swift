@@ -9,12 +9,14 @@ import SwiftUI
 
 struct Home: View {
 		// MARK: Matched Geometry Effect var's
-		@Namespace var animation
-		private var productLineMGE = "productLineMGE"
-		private var searchBarMGE = "searchBarMGE"
+//		@Namespace var animation
+		var animation: Namespace.ID
+		var productLineMGE = "productLineMGE"
+		var searchBarMGE = "searchBarMGE"
 
 		/// viewModel
 		@StateObject var viewModel: HomeViewModel = HomeViewModel()
+		@EnvironmentObject var detailViewModel: DetailProductViewModel
 
 		var body: some View {
 				ScrollView(.vertical, showsIndicators: false) {
@@ -99,6 +101,7 @@ struct Home: View {
 								if viewModel.isSearchActivated {
 										SearchView(animation: animation)
 												.environmentObject(viewModel)
+//												.environmentObject(detailViewModel)
 								}
 						}
 				}
@@ -142,15 +145,24 @@ struct Home: View {
 				let imageSize = getScreenBounds().width / 2.5
 
 				return VStack(spacing: 10) {
-
-						Image(product.productImage)
-								.resizable()
-								.aspectRatio(contentMode: .fit)
-								.frame(width: imageSize, height: imageSize)
-
+						/// Product Image
+						ZStack {
+								if detailViewModel.isShowDetailProduct, let product = detailViewModel.product {
+										Image(product.productImage)
+												.resizable()
+												.aspectRatio(contentMode: .fit)
+												.opacity(0)
+								} else {
+										Image(product.productImage)
+												.resizable()
+												.aspectRatio(contentMode: .fit)
+												.matchedGeometryEffect(id: "\(product.id)IMAGE", in: animation)
+								}
+						}
+						.frame(width: imageSize, height: imageSize)
 						/// Moving image to top to look like its fixed at half top
-								.offset(y: -80)
-								.padding(.bottom, -80)
+						.offset(y: -80)
+						.padding(.bottom, -80)
 
 						Text(product.title)
 								.font(.custom(Font.raleway, size: 18))
@@ -172,6 +184,14 @@ struct Home: View {
 				.background(
 						Color.white.cornerRadius(25)
 				)
+				/// Showing Detail Product when tapped
+				.onTapGesture {
+						withAnimation(.easeInOut) {
+								detailViewModel.isShowDetailProduct = true
+								detailViewModel.fromSearch = false
+								detailViewModel.product = product
+						}
+				}
 		}
 
 		private func SeeMoreButton() -> some View {
@@ -211,6 +231,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
 		static var previews: some View {
-				Home()
+				MainPage()
 		}
 }
