@@ -73,9 +73,3 @@ struct StaggeredGridView<Content: View, T: Identifiable>: View where T: Hashable
 		}
 
 }
-
-//struct StaggeredGridView_Previews: PreviewProvider {
-//		static var previews: some View {
-//		StaggeredGridView()
-//		}
-//}

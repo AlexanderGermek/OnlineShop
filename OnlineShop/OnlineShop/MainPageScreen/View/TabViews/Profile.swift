@@ -14,14 +14,32 @@ struct Profile: View {
 																"Cards",
 																"Notifications"]
 
+		@AppStorage("logStatus") var logStatus = false
+
 		var body: some View {
 				NavigationView {
 						ScrollView(.vertical, showsIndicators: false) {
 								VStack {
-										/// My profile
-										Text("My Profile")
-												.font(.custom(Font.raleway, size: 28).bold())
-												.frame(maxWidth: .infinity, alignment: .leading)
+
+										HStack {
+
+												/// My profile
+												Text("My Profile")
+														.font(.custom(Font.raleway, size: 28).bold())
+														.frame(maxWidth: .infinity, alignment: .leading)
+
+												Spacer()
+
+												Button {
+														withAnimation(.easeOut) {
+																logStatus = false
+														}
+												} label: {
+														Text("Log Out")
+																.font(.custom(Font.raleway, size: 14).bold())
+																.foregroundColor(.red)
+												}
+										}
 
 										VStack(spacing: 15) {
 												/// Image
@@ -64,7 +82,6 @@ struct Profile: View {
 																.background(Color.homeBackground.ignoresSafeArea())
 												}
 										}
-
 								}
 								.padding(.horizontal, 22)
 								.padding(.vertical, 20)
