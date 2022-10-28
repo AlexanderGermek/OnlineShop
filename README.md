@@ -12,5 +12,5 @@ Product View | Product View 2 | Profile | Basket
 
 Search | Favorities
 --- | ---
-<img width="344" alt="image" src="https://user-images.githubusercontent.com/76963888/198562487-9ec59133-0634-47fb-984c-1b813e141bce.png">|<img width="344" alt="image" src="https://user-images.githubusercontent.com/76963888/198561757-d5dc3f32-976b-4cd4-b558-b619bb69b332.png">
+<img width="250" height="560" alt="image" src="https://user-images.githubusercontent.com/76963888/198562487-9ec59133-0634-47fb-984c-1b813e141bce.png">|<img width="250" height="560" alt="image" src="https://user-images.githubusercontent.com/76963888/198561757-d5dc3f32-976b-4cd4-b558-b619bb69b332.png">
 
