@@ -10,6 +10,9 @@
 		12009DAC290AFDC3006D2AD8 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12009DAB290AFDC3006D2AD8 /* Cart.swift */; };
 		121EB0342906858100C1A54F /* DetailProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121EB0332906858100C1A54F /* DetailProductViewModel.swift */; };
 		121EB0362906885F00C1A54F /* DetailProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121EB0352906885F00C1A54F /* DetailProductView.swift */; };
+		125A344D290BFCDB00CF4271 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 125A344A290BFCDB00CF4271 /* Raleway-SemiBold.ttf */; };
+		125A344E290BFCDB00CF4271 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 125A344B290BFCDB00CF4271 /* Raleway-Regular.ttf */; };
+		125A344F290BFCDB00CF4271 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 125A344C290BFCDB00CF4271 /* Raleway-Bold.ttf */; };
 		126B1FD72905189000969980 /* MoreProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B1FD62905189000969980 /* MoreProductsView.swift */; };
 		126B1FD9290539B400969980 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B1FD8290539B400969980 /* SearchView.swift */; };
 		126B1FDB29058BF200969980 /* StaggeredGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B1FDA29058BF200969980 /* StaggeredGridView.swift */; };
@@ -23,9 +26,6 @@
 		12A91D6929003794003D2899 /* OnlineShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D6829003794003D2899 /* OnlineShopApp.swift */; };
 		12A91D6B29003794003D2899 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D6A29003794003D2899 /* ContentView.swift */; };
 		12A91D7029003795003D2899 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D6F29003795003D2899 /* Preview Assets.xcassets */; };
-		12A91D7C29003A06003D2899 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D7929003A06003D2899 /* Raleway-SemiBold.ttf */; };
-		12A91D7D29003A06003D2899 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D7A29003A06003D2899 /* Raleway-Regular.ttf */; };
-		12A91D7E29003A06003D2899 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D7B29003A06003D2899 /* Raleway-Bold.ttf */; };
 		12A91D8229003B11003D2899 /* OnBoardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D8129003B11003D2899 /* OnBoardingPage.swift */; };
 		12A91D8429003CD3003D2899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A91D8329003CD3003D2899 /* Assets.xcassets */; };
 		12A91D8829004DF0003D2899 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A91D8729004DF0003D2899 /* LoginPage.swift */; };
@@ -39,6 +39,9 @@
 		12009DAB290AFDC3006D2AD8 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		121EB0332906858100C1A54F /* DetailProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductViewModel.swift; sourceTree = "<group>"; };
 		121EB0352906885F00C1A54F /* DetailProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductView.swift; sourceTree = "<group>"; };
+		125A344A290BFCDB00CF4271 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		125A344B290BFCDB00CF4271 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		125A344C290BFCDB00CF4271 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		126B1FD62905189000969980 /* MoreProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreProductsView.swift; sourceTree = "<group>"; };
 		126B1FD8290539B400969980 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		126B1FDA29058BF200969980 /* StaggeredGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGridView.swift; sourceTree = "<group>"; };
@@ -53,9 +56,6 @@
 		12A91D6829003794003D2899 /* OnlineShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineShopApp.swift; sourceTree = "<group>"; };
 		12A91D6A29003794003D2899 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		12A91D6F29003795003D2899 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		12A91D7929003A06003D2899 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
-		12A91D7A29003A06003D2899 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
-		12A91D7B29003A06003D2899 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		12A91D7F29003A75003D2899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		12A91D8129003B11003D2899 /* OnBoardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPage.swift; sourceTree = "<group>"; };
 		12A91D8329003CD3003D2899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,12 +102,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		125A3449290BFCDB00CF4271 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				125A344A290BFCDB00CF4271 /* Raleway-SemiBold.ttf */,
+				125A344B290BFCDB00CF4271 /* Raleway-Regular.ttf */,
+				125A344C290BFCDB00CF4271 /* Raleway-Bold.ttf */,
+			);
+			name = Fonts;
+			path = OnlineShop/MainPageScreen/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 		1288AD3029041AA300C04CA7 /* MainPageScreen */ = {
 			isa = PBXGroup;
 			children = (
 				1288AD3429041FCC00C04CA7 /* Model */,
 				1288AD372904230E00C04CA7 /* View */,
 				1288AD3B2904248300C04CA7 /* ViewModel */,
+				125A3449290BFCDB00CF4271 /* Fonts */,
 			);
 			path = MainPageScreen;
 			sourceTree = "<group>";
@@ -193,7 +205,6 @@
 				1288AD382904232C00C04CA7 /* OnBoardingPageScreen */,
 				12CF023A29013731002DB86A /* LoginPageScreen */,
 				1288AD3029041AA300C04CA7 /* MainPageScreen */,
-				12A91D7829003A06003D2899 /* Fonts */,
 				12A91D7F29003A75003D2899 /* Info.plist */,
 				12A91D6829003794003D2899 /* OnlineShopApp.swift */,
 				12A91D6A29003794003D2899 /* ContentView.swift */,
@@ -210,17 +221,6 @@
 				12A91D6F29003795003D2899 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		12A91D7829003A06003D2899 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				12A91D7929003A06003D2899 /* Raleway-SemiBold.ttf */,
-				12A91D7A29003A06003D2899 /* Raleway-Regular.ttf */,
-				12A91D7B29003A06003D2899 /* Raleway-Bold.ttf */,
-			);
-			name = Fonts;
-			path = "../../../Downloads/EcommerceAppKit-main/Shared/Fonts";
 			sourceTree = "<group>";
 		};
 		12A91D89290056C4003D2899 /* ViewModel */ = {
@@ -298,11 +298,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12A91D7E29003A06003D2899 /* Raleway-Bold.ttf in Resources */,
-				12A91D7D29003A06003D2899 /* Raleway-Regular.ttf in Resources */,
-				12A91D7C29003A06003D2899 /* Raleway-SemiBold.ttf in Resources */,
+				125A344E290BFCDB00CF4271 /* Raleway-Regular.ttf in Resources */,
+				125A344D290BFCDB00CF4271 /* Raleway-SemiBold.ttf in Resources */,
 				12A91D7029003795003D2899 /* Preview Assets.xcassets in Resources */,
 				12A91D8429003CD3003D2899 /* Assets.xcassets in Resources */,
+				125A344F290BFCDB00CF4271 /* Raleway-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
