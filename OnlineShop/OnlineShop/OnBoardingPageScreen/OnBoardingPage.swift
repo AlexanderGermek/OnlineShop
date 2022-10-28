@@ -46,7 +46,6 @@ struct OnBoardingPage: View {
 			Spacer()
 
 		}
-//		.padding(.horizontal, 10)
 		.padding(.top, getScreenBounds().height < 750 ? 0 : 20)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.customPurple)

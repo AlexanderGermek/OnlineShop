@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DetailProductView: View {
-//		var product: Product
 		// MARK: Properties
 		var animation: Namespace.ID // matched geometry effect
 
@@ -183,13 +182,3 @@ struct DetailProductView: View {
 		}
 
 }
-
-//struct DetailProductView_Previews: PreviewProvider {
-//		static var previews: some View {
-//				let animation: Namespace.ID
-//				let object = DetailProductdetailViewModel()
-//				object.product = HomedetailViewModel().products[0]
-//				return DetailProductView()
-//						.environmentObject(object)
-//		}
-//}
