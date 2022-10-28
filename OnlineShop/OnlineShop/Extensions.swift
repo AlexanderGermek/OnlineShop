@@ -15,6 +15,7 @@ extension Color {
 		static let customPurple = Color("Purple")
 		static let loginCirlceColor = Color("LoginCircle")
 		static let homeBackground = Color("HomeBG")
+		static let quantityColor = Color("Quantity")
 }
 
 extension View {

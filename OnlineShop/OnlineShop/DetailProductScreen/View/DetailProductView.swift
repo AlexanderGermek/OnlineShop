@@ -13,6 +13,8 @@ struct DetailProductView: View {
 		var animation: Namespace.ID // matched geometry effect
 
 		@EnvironmentObject var detailViewModel: DetailProductViewModel
+		@EnvironmentObject var homeViewModel: HomeViewModel
+
 		var body: some View {
 				VStack {
 						/// Title Bar and Product Image
@@ -35,20 +37,19 @@ struct DetailProductView: View {
 
 										/// Liked
 										Button {
-
+												addToLiked()
 										} label: {
 												Image("Liked")
 														.renderingMode(.template)
 														.resizable()
 														.aspectRatio(contentMode: .fit)
 														.frame(width: 22, height: 22)
-														.foregroundColor(.black.opacity(0.7))
+														.foregroundColor(isLiked() ? .red : .black.opacity(0.7))
 										}
 								}
 								.padding()
 
 								/// Product Image
-//								let id =
 								Image(detailViewModel.product?.productImage ?? "")
 										.resizable()
 										.aspectRatio(contentMode: .fit)
@@ -74,6 +75,8 @@ struct DetailProductView: View {
 						)
 						.zIndex(0)
 				}
+				.animation(.easeInOut, value: detailViewModel.likedProducts)
+				.animation(.easeInOut, value: detailViewModel.cartProducts)
 				.background(Color.homeBackground.ignoresSafeArea())
 		}
 
@@ -124,15 +127,16 @@ struct DetailProductView: View {
 
 						/// Add button
 						Button {
-
+								addToCart()
 						} label: {
-								Text("add to basket")
+								Text("\(isAddedToCart() ? "added" : "add") to basket")
 										.font(.custom(Font.raleway, size: 20).bold())
 										.foregroundColor(.white)
 										.padding(.vertical, 20)
 										.frame(maxWidth: .infinity)
 										.background(
-												Color.customPurple.cornerRadius(15)
+												(isAddedToCart() ? .red : Color.customPurple)
+														.cornerRadius(15)
 										)
 										.shadow(color: .black.opacity(0.08), radius: 5, x: 5, y: 5)
 						}
@@ -141,6 +145,41 @@ struct DetailProductView: View {
 				.padding([.horizontal, .bottom], 20)
 				.padding(.top, 25)
 				.frame(maxWidth: .infinity, alignment: .leading)
+		}
+
+		// MARK: Private
+		private func addToLiked() {
+				guard let detailProduct = detailViewModel.product else { return }
+
+				if let index = detailViewModel.likedProducts.firstIndex(where: { product in
+						return detailProduct.id == product.id
+				}) {
+						detailViewModel.likedProducts.remove(at: index)
+				} else {
+						detailViewModel.likedProducts.append(detailProduct)
+				}
+		}
+
+		private func addToCart() {
+				guard let detailProduct = detailViewModel.product else { return }
+
+				if let index = detailViewModel.cartProducts.firstIndex(where: { product in
+						return detailProduct.id == product.id
+				}) {
+						detailViewModel.cartProducts.remove(at: index)
+				} else {
+						detailViewModel.cartProducts.append(detailProduct)
+				}
+		}
+
+		private func isLiked() -> Bool {
+				guard let detailProduct = detailViewModel.product else { return false}
+				return detailViewModel.likedProducts.contains(detailProduct)
+		}
+
+		private func isAddedToCart() -> Bool {
+				guard let detailProduct = detailViewModel.product else { return false}
+				return detailViewModel.cartProducts.contains(detailProduct)
 		}
 
 }

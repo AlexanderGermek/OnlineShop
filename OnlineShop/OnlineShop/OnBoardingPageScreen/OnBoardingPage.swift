@@ -10,12 +10,15 @@ import SwiftUI
 struct OnBoardingPage: View {
 		@State var showLoginPage: Bool = false
 	var body: some View {
-		VStack(alignment: .leading) {
+		VStack {
 
-			Text("Find your\nGadget")
-				.font(.custom(Font.raleway, size: 55))
+			Text("Apple\nMarketplace")
+				.font(.custom(Font.raleway, size: 45))
 				.fontWeight(.bold)
 				.foregroundColor(.white)
+				.padding(.horizontal)
+				.multilineTextAlignment(.center)
+				.shadow(color: .black.opacity(0.3), radius: 5, x: 5, y: 5)
 
 			Image("OnBoard")
 				.resizable()
@@ -43,7 +46,7 @@ struct OnBoardingPage: View {
 			Spacer()
 
 		}
-		.padding(.horizontal, 10)
+//		.padding(.horizontal, 10)
 		.padding(.top, getScreenBounds().height < 750 ? 0 : 20)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.customPurple)

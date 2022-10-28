@@ -33,7 +33,13 @@ struct MainPage: View {
 												case .profile:
 														Profile()
 																.tag(tabCase)
-												default: Text(tabCase.rawValue)
+												case .liked:
+														Liked()
+																.environmentObject(detailViewModel)
+																.tag(tabCase)
+												case .cart:
+														Cart()
+																.environmentObject(detailViewModel)
 																.tag(tabCase)
 												}
 										}
