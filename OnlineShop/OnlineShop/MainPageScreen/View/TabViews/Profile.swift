@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct Profile: View {
 		private var profileLinks = ["Edit Profile",
@@ -15,6 +16,8 @@ struct Profile: View {
 																"Notifications"]
 
 		@AppStorage("logStatus") var logStatus = false
+
+		@EnvironmentObject var detailViewModel: DetailProductViewModel
 
 		var body: some View {
 				NavigationView {
@@ -31,9 +34,17 @@ struct Profile: View {
 												Spacer()
 
 												Button {
+														
+														do {
+																try? Auth.auth().signOut()
+																print("Log Out")
+														}
+
 														withAnimation(.easeOut) {
 																logStatus = false
 														}
+
+
 												} label: {
 														Text("Log Out")
 																.font(.custom(Font.raleway, size: 14).bold())

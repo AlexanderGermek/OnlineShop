@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>790137673577-bm50jdsqjpt6234qbtqbriguvfad7o19.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.790137673577-bm50jdsqjpt6234qbtqbriguvfad7o19</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCebEg9fhY7Otrj8jAJgPXtx5yt0Z8LHFw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>790137673577</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>agermek.OnlineShop</string>
+	<key>PROJECT_ID</key>
+	<string>onlineshoptestaggermek</string>
+	<key>STORAGE_BUCKET</key>
+	<string>onlineshoptestaggermek.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:790137673577:ios:d7dca874977cc470c74ff8</string>
+</dict>
+</plist>

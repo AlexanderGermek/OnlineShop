@@ -14,6 +14,7 @@ struct Home: View {
 		var productLineMGE = "productLineMGE"
 		var searchBarMGE = "searchBarMGE"
 
+		@State var scrollToogle = false
 		/// viewModel
 		@StateObject var viewModel: HomeViewModel = HomeViewModel()
 		@EnvironmentObject var detailViewModel: DetailProductViewModel
@@ -48,11 +49,12 @@ struct Home: View {
 										.padding(.horizontal, 25)
 
 								/// Products tabview - подписи разделов
+
 								ScrollViewReader { proxy in
 										ScrollView(.horizontal, showsIndicators: false) {
-												//										ScrollViewReader { proxy in
 
 												HStack(spacing: 18) {
+
 														ForEach(ProductType.allCases, id: \.self) { type in
 																ProductTypeView(for: type)
 														}
@@ -61,24 +63,37 @@ struct Home: View {
 												//										}
 										}
 										.padding(.top, 28)
-//										.onChange(of: viewModel.productType) { _ in
-//												viewModel.filterProductByType()
-////												proxy.scrollTo(0)
-//										}
 								}
 
+
 								/// Product Page - карточки продуктов
-								ScrollView(.horizontal, showsIndicators: false) {
-										HStack(spacing: 25) {
-												ForEach(viewModel.filteredProducts) { product in
-														ProductCardView(for: product)
+								ScrollViewReader { proxy in
+										ScrollView(.horizontal, showsIndicators: false) {
+												HStack(spacing: 25) {
+														ForEach(viewModel.filteredProducts) { product in
+																if let index = viewModel.filteredProducts.firstIndex(of: product) {
+																		if index == 0 {
+																				ProductCardView(for: product).id(0)
+																		} else {
+																				ProductCardView(for: product)
+																		}
+																}
+
+														}
+												}
+												.padding(.horizontal, 25)
+												.padding(.bottom)
+												.padding(.top, 80)
+										}
+										.padding(.top, 30)
+										.onChange(of: scrollToogle) { _ in
+												if scrollToogle {
+														proxy.scrollTo(0)
+														scrollToogle.toggle()
 												}
 										}
-										.padding(.horizontal, 25)
-										.padding(.bottom)
-										.padding(.top, 80)
+
 								}
-								.padding(.top, 30)
 
 								/// See More Button ...
 								SeeMoreButton()
@@ -101,7 +116,6 @@ struct Home: View {
 								if viewModel.isSearchActivated {
 										SearchView(animation: animation)
 												.environmentObject(viewModel)
-//												.environmentObject(detailViewModel)
 								}
 						}
 				}
@@ -196,7 +210,8 @@ struct Home: View {
 
 		private func SeeMoreButton() -> some View {
 				Button {
-						viewModel.isShowMoreProductsOnType.toggle()
+//						viewModel.isShowMoreProductsOnType.toggle()
+						scrollToogle.toggle()
 				} label: {
 						Label {
 								Image(systemName: "arrow.right")

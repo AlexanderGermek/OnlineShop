@@ -33,6 +33,7 @@ struct MainPage: View {
 												case .profile:
 														Profile()
 																.tag(tabCase)
+																.environmentObject(detailViewModel)
 												case .liked:
 														Liked()
 																.environmentObject(detailViewModel)

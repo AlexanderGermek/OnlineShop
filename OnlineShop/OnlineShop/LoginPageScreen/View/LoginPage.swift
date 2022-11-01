@@ -11,49 +11,74 @@ struct LoginPage: View {
 		
 		@StateObject var loginData: LoginPageViewModel = LoginPageViewModel()
 		var body: some View {
+				ZStack {
+						VStack {
+								/// Welcome Background text
+								Text("Welcome\nback")
+										.font(.custom(Font.raleway, size: 55)).bold()
+										.foregroundColor(.white)
+										.frame(maxWidth: .infinity, alignment: .leading)
+										.frame(height: getScreenBounds().height / 4)
+										.padding()
+										.padding(.leading, 30)
+										.shadow(color: .black.opacity(0.2), radius: 5, x: 5, y: 5)
+								/// Circles
+										.background(
+												BackgroundCirclesView()
+										)
 
-				VStack {
-						/// Welcome Background text
-						Text("Welcome\nback")
-								.font(.custom(Font.raleway, size: 55)).bold()
-								.foregroundColor(.white)
-								.frame(maxWidth: .infinity, alignment: .leading)
-								.frame(height: getScreenBounds().height / 4)
-								.padding()
-								.padding(.leading, 30)
-								.shadow(color: .black.opacity(0.2), radius: 5, x: 5, y: 5)
-						/// Circles
-								.background(
-										BackgroundCirclesView()
-								)
+								/// Custom white rectangle
+								ScrollView(.vertical, showsIndicators: false) {
+										VStack {
+												/// Login TextFields
+												GetLoginTextFields().padding(30)
 
-						/// Custom white rectangle
-						ScrollView(.vertical, showsIndicators: false) {
-								VStack {
-										/// Login TextFields
-										GetLoginTextFields().padding(30)
-
-										/// Login Buttons
-										GetButtons()
+												/// Login Buttons
+												GetButtons()
+										}
 								}
+								.frame(maxWidth: .infinity, maxHeight: .infinity)
+								.background(
+										Color.white
+												.clipShape(CustomCornerShape(corners: [.topLeft, .topRight], radius: 25))
+												.ignoresSafeArea()
+								)
 						}
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
-						.background(
-								Color.white
-										.clipShape(CustomCornerShape(corners: [.topLeft, .topRight], radius: 25))
-										.ignoresSafeArea()
-						)
-				}
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
-				.background(Color.customPurple)
+						.background(Color.customPurple)
+						/// Clearing data when Changes
+						.onChange(of: loginData.isRegisterUser) { newValue in
+								loginData.email = ""
+								loginData.password = ""
+								loginData.reEnterPassword = ""
+								loginData.isShowPassword = false
+								loginData.isShowReEnterPassword = false
+						}
+						.alert(isPresented: $loginData.showAlert) {
 
-				/// Clearing data when Changes
-				.onChange(of: loginData.isRegisterUser) { newValue in
-						loginData.email = ""
-						loginData.password = ""
-						loginData.reEnterPassword = ""
-						loginData.isShowPassword = false
-						loginData.isShowReEnterPassword = false
+								if !loginData.wasRegister {
+										return Alert(title: Text("Message"),
+													message: Text(loginData.alertMsg),
+													dismissButton: .destructive(Text("OK")))
+								} else {
+										return Alert(title: Text("Message"),
+													message: Text(loginData.alertMsg),
+													dismissButton: .destructive(Text("Ok, go to Login!"), action: {
+
+												withAnimation {
+														loginData.isRegisterUser.toggle()
+												}
+
+												loginData.wasRegister = false
+										})
+										)
+								}
+						}
+
+						if loginData.isLoading {
+								SpinnerView()
+						}
+
 				}
 		}
 
@@ -75,9 +100,15 @@ struct LoginPage: View {
 						.foregroundColor(.black.opacity(0.8))
 
 						if isSecure && !isShow.wrappedValue {
-								SecureField(hint, text: value).padding(.top, 2)
+								SecureField(hint, text: value)
+										.padding(.top, 2)
+										.textInputAutocapitalization(.never)
+										.autocorrectionDisabled()
 						} else {
-								TextField(hint, text: value).padding(.top, 2)
+								TextField(hint, text: value)
+										.padding(.top, 2)
+										.textInputAutocapitalization(.never)
+										.autocorrectionDisabled()
 						}
 
 						Divider().background(.black.opacity(0.4))
@@ -86,7 +117,11 @@ struct LoginPage: View {
 				.overlay(alignment: .trailing) {
 						if isSecure {
 								Button {
-										isShow.wrappedValue.toggle()
+
+										withAnimation {
+												isShow.wrappedValue.toggle()
+										}
+
 								} label: {
 										Text(isShow.wrappedValue ? "Hide": "Show")
 												.font(.custom(Font.raleway, size: 13).bold())
@@ -99,6 +134,7 @@ struct LoginPage: View {
 
 		private func GetLoginTextFields() -> some View {
 				VStack(spacing: 15) {
+
 						Text(loginData.isRegisterUser ? "Register" : "Login")
 								.font(.custom(Font.raleway, size: 22).bold())
 								.frame(maxWidth: .infinity, alignment: .leading)
@@ -178,6 +214,7 @@ struct LoginPage: View {
 										.foregroundColor(Color.customPurple)
 						}
 						.padding(.top, 8)
+						.padding(.bottom, 10).ignoresSafeArea()
 				}
 		}
 }

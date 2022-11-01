@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 final class LoginPageViewModel: ObservableObject {
+		// MARK: - Properties
+		/// AppStorage
+		@AppStorage("logStatus") var logStatus = false
+
 		/// Login properties
 		@Published var email: String = ""
 		@Published var password: String = ""
@@ -18,23 +23,119 @@ final class LoginPageViewModel: ObservableObject {
 		@Published var reEnterPassword: String = ""
 		@Published var isShowReEnterPassword: Bool = false
 
-		/// AppStorage
-		@AppStorage("logStatus") var logStatus = false
+		@Published var showAlert = false
+		@Published var alertMsg = ""
+		@Published var isLoading = false
+		var wasRegister = false
 
-		/// Functions
+		// MARK: - Functions
 		func login() {
+				/// Пароль или почта пустые
+				guard (!email.isEmpty && !password.isEmpty) else {
+						alertMsg = "Email and password shouldn't be empty!"
+						showAlert.toggle()
+						return
+				}
+
 				withAnimation {
-						logStatus = true
+						isLoading.toggle()
+				}
+
+				/// Ошибка авторизации
+				Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
+						guard let self = self else { return }
+
+						withAnimation {
+								self.isLoading.toggle()
+						}
+
+						guard error == nil else {
+								self.alertMsg = error?.localizedDescription ?? "Auth error! Try one more time!"
+								self.showAlert.toggle()
+								return
+						}
+
+						/// Пользователь зарегистрирован, но не прошел верификацию
+						guard let user = Auth.auth().currentUser, user.isEmailVerified else {
+								self.alertMsg = "Please verify your email address, check your email box."
+								self.showAlert.toggle()
+								do {
+										try? Auth.auth().signOut()
+								}
+								return
+						}
+
+						withAnimation {
+								self.logStatus = true
+						}
 				}
 		}
 
 		func register() {
+				/// Пароль, подтверждение пароля или почта пустые
+				guard (!email.isEmpty && !password.isEmpty && !reEnterPassword.isEmpty) else {
+						alertMsg = "Email, password and re-enter password shouldn't be empty!"
+						showAlert.toggle()
+						return
+				}
+
+				/// Пароли не совпадают
+				guard password == reEnterPassword else {
+						alertMsg = "Password mismatch!"
+						showAlert.toggle()
+						return
+				}
+
 				withAnimation {
-						logStatus = true
+						self.isLoading.toggle()
+				}
+
+				Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
+						guard let self = self else { return }
+
+						guard error == nil else {
+								self.alertMsg = error?.localizedDescription ?? "Register error! Try one more time!"
+								withAnimation {
+										self.isLoading.toggle()
+								}
+								self.showAlert.toggle()
+								return
+						}
+
+						result?.user.sendEmailVerification { error in
+								guard error == nil else {
+										self.alertMsg = error?.localizedDescription ?? "Send email verification error!"
+										withAnimation {
+												self.isLoading.toggle()
+										}
+										self.showAlert.toggle()
+										return
+								}
+
+								withAnimation {
+										self.isLoading.toggle()
+								}
+
+								self.alertMsg = "Email verification has been sent! Verify your email ID, check your email box!"
+								self.showAlert.toggle()
+								self.wasRegister = true
+						}
 				}
 		}
 
 		func forgotPassword() {
+				let alert = UIAlertController(
+						title: "Reset Password",
+						message: "Enter Your Email ID to reset password",
+						preferredStyle: .alert)
+
+				alert.addTextField { (password) in
+						password.placeholder = "email"
+				}
+
+				let proceed = UIAlertAction(title: "Cancel", style: .destructive)
+
+//				alert.addAction(cancel)
 				
 		}
 
