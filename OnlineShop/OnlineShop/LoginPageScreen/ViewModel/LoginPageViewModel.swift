@@ -133,10 +133,42 @@ final class LoginPageViewModel: ObservableObject {
 						password.placeholder = "email"
 				}
 
-				let proceed = UIAlertAction(title: "Cancel", style: .destructive)
+				let proceedAction = UIAlertAction(title: "Reset", style: .default) { (_) in
+						guard let email = alert.textFields?.first?.text, !email.isEmpty else { return }
 
-//				alert.addAction(cancel)
-				
+						withAnimation {
+								self.isLoading.toggle()
+						}
+
+						Auth.auth().sendPasswordReset(withEmail: email) { error in
+								withAnimation {
+										self.isLoading.toggle()
+								}
+
+								guard error == nil else {
+										self.alertMsg = error?.localizedDescription ?? "Reset Error! Try Again!"
+										self.showAlert.toggle()
+										return
+								}
+
+								self.alertMsg = "Password Reset Link Has Been Sent!"
+								self.showAlert.toggle()
+						}
+				}
+
+				let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+
+				alert.addAction(proceedAction)
+				alert.addAction(cancelAction)
+
+				UIApplication
+						.shared
+						.connectedScenes
+						.compactMap { $0 as? UIWindowScene }
+						.flatMap { $0.windows }
+						.first { $0.isKeyWindow }?
+						.rootViewController?
+						.present(alert, animated: true)
 		}
 
 }

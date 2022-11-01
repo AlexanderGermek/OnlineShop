@@ -37,13 +37,11 @@ struct Profile: View {
 														
 														do {
 																try? Auth.auth().signOut()
-																print("Log Out")
 														}
 
-														withAnimation(.easeOut) {
+														withAnimation(.easeInOut) {
 																logStatus = false
 														}
-
 
 												} label: {
 														Text("Log Out")
