@@ -7,6 +7,8 @@
 
 import SwiftUI
 import AuthenticationServices
+import GoogleSignIn
+import FirebaseAuth
 
 struct LoginPage: View {
 		
@@ -37,8 +39,13 @@ struct LoginPage: View {
 												/// Login Buttons
 												GetButtons()
 
-												/// Apple Sign In Button
-												GetAppleSignInButton()
+												/// Google Apple Sign In Button
+												VStack {
+														GetAppleSignInButton()
+
+														GetGoogleSignInButton()
+												}
+
 										}
 								}
 								.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -246,6 +253,32 @@ struct LoginPage: View {
 				.frame(height: 40)
 				.clipShape(Capsule())
 				.padding(.horizontal, 50)
+		}
+
+		private func GetGoogleSignInButton() -> some View {
+				HStack {
+						Button {
+								loginData.googleSignIn()
+						} label: {
+								Image("google")
+										.renderingMode(.template)
+										.resizable()
+										.aspectRatio(contentMode: .fit)
+										.frame(width: 22, height: 22)
+										.foregroundColor(.white)
+
+								Text("Sign in with Google")
+										.font(.custom(Font.raleway, size: 15))
+										.foregroundColor(.white)
+						}
+				}
+				.foregroundColor(.white)
+				.padding(.horizontal, 50)
+				.frame(height: 40)
+				.background(
+						RoundedRectangle(cornerRadius: 20, style: .continuous)
+								.fill(.black)
+				)
 		}
 }
 

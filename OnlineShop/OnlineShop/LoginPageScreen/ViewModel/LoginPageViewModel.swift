@@ -195,10 +195,51 @@ final class LoginPageViewModel: ObservableObject {
 
 				let firebaseCredential = OAuthProvider.credential(withProviderID: "apple.com",
 																													idToken: tokenString,
-																													rawNonce: currentNonce) //currentNonce
+																													rawNonce: currentNonce)
 
-				Auth.auth().signIn(with: firebaseCredential) { [weak self] (result, error) in
+				withAnimation {
+						isLoading.toggle()
+				}
+
+				firebaseSignIn(credential: firebaseCredential)
+		}
+
+		// MARK: - Google Sign In
+		func googleSignIn() {
+				guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+				let config = GIDConfiguration(clientID: clientID)
+				let vc = UIApplication.shared.rootViewController()
+
+				GIDSignIn.sharedInstance.signIn(with: config, presenting: vc) { [unowned self] user, error in
+
+						if let error = error {
+								showError(error)
+								return
+						}
+
+						guard let authentication = user?.authentication, let idToken = authentication.idToken else { return }
+
+						let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+																													 accessToken: authentication.accessToken)
+
+						withAnimation {
+								isLoading.toggle()
+						}
+
+						firebaseSignIn(credential: credential)
+				}
+		}
+
+		// MARK: - Firebase Sign In
+		private func firebaseSignIn(credential: AuthCredential) {
+				Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+
 						guard let self = self else { return }
+
+						withAnimation {
+								self.isLoading.toggle()
+						}
 
 						if let error = error {
 								self.showError(error)
@@ -209,7 +250,6 @@ final class LoginPageViewModel: ObservableObject {
 						withAnimation {
 								self.logStatus = true
 						}
-
 				}
 		}
 }
@@ -259,21 +299,5 @@ extension LoginPageViewModel {
 				}.joined()
 
 				return hashString
-		}
-
-		@available(iOS 13, *)
-		func startSignInWithAppleFlow() {
-
-				let nonce = randomNonceString()
-				currentNonce = nonce
-				let appleIDProvider = ASAuthorizationAppleIDProvider()
-				let request = appleIDProvider.createRequest()
-				request.requestedScopes = [.fullName, .email]
-				request.nonce = sha256(nonce)
-
-//				let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-//				authorizationController.delegate = self
-//				authorizationController.presentationContextProvider = self
-//				authorizationController.performRequests()
 		}
 }

@@ -29,3 +29,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 				return GIDSignIn.sharedInstance.handle(url)
 		}
 }
+
+
+extension UIApplication {
+		func rootViewController() -> UIViewController {
+				guard let window = connectedScenes.first as? UIWindowScene else { return .init() }
+				guard let vc = window.windows.last?.rootViewController else { return .init() }
+				return vc
+		}
+}

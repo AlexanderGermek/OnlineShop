@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import GoogleSignIn
 
 struct Profile: View {
 		private var profileLinks = ["Edit Profile",
@@ -37,6 +38,7 @@ struct Profile: View {
 														
 														do {
 																try? Auth.auth().signOut()
+																GIDSignIn.sharedInstance.signOut()
 														}
 
 														withAnimation(.easeInOut) {
