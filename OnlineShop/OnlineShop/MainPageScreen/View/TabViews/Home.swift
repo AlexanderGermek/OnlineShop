@@ -210,8 +210,8 @@ struct Home: View {
 
 		private func SeeMoreButton() -> some View {
 				Button {
-//						viewModel.isShowMoreProductsOnType.toggle()
-						scrollToogle.toggle()
+						viewModel.isShowMoreProductsOnType.toggle()
+//						scrollToogle.toggle()
 				} label: {
 						Label {
 								Image(systemName: "arrow.right")

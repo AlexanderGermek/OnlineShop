@@ -67,6 +67,7 @@
 		12A91D8A290056DE003D2899 /* LoginPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewModel.swift; sourceTree = "<group>"; };
 		12A91D8C2900594F003D2899 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		12A91D8E29005BD2003D2899 /* CustomCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCornerShape.swift; sourceTree = "<group>"; };
+		12BC6BE129140CD6002079AD /* OnlineShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnlineShop.entitlements; sourceTree = "<group>"; };
 		12CF023B29013783002DB86A /* BackgroundCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCirclesView.swift; sourceTree = "<group>"; };
 		12D8A11729112C97005707E9 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		6A4288D6D6A604A80394BF1F /* Pods-OnlineShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineShop.release.xcconfig"; path = "Target Support Files/Pods-OnlineShop/Pods-OnlineShop.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 		12A91D6729003794003D2899 /* OnlineShop */ = {
 			isa = PBXGroup;
 			children = (
+				12BC6BE129140CD6002079AD /* OnlineShop.entitlements */,
 				121EB02C290684BC00C1A54F /* DetailProductScreen */,
 				1288AD382904232C00C04CA7 /* OnBoardingPageScreen */,
 				12CF023A29013731002DB86A /* LoginPageScreen */,
@@ -536,6 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OnlineShop/OnlineShop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnlineShop/Preview Content\"";
@@ -567,6 +570,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OnlineShop/OnlineShop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnlineShop/Preview Content\"";

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct LoginPage: View {
 		
@@ -35,6 +36,9 @@ struct LoginPage: View {
 
 												/// Login Buttons
 												GetButtons()
+
+												/// Apple Sign In Button
+												GetAppleSignInButton()
 										}
 								}
 								.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -216,6 +220,32 @@ struct LoginPage: View {
 						.padding(.top, 8)
 						.padding(.bottom, 10).ignoresSafeArea()
 				}
+		}
+
+		private func GetAppleSignInButton() -> some View {
+				SignInWithAppleButton { request in
+
+						loginData.currentNonce = loginData.randomNonceString()
+						request.requestedScopes = [.email, .fullName]
+						request.nonce = loginData.sha256(loginData.currentNonce)
+
+				} onCompletion: { result in
+
+						switch result {
+						case .success(let auth):
+								guard let credential = auth.credential as? ASAuthorizationAppleIDCredential else {
+										loginData.showError(nil, text: "Error with apple sign in")
+										return
+								}
+								loginData.authenticate(credential: credential)
+						case .failure(let error):
+								loginData.showError(error)
+						}
+				}
+				.signInWithAppleButtonStyle(.black)
+				.frame(height: 40)
+				.clipShape(Capsule())
+				.padding(.horizontal, 50)
 		}
 }
 
